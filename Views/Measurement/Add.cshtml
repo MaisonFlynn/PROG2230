@@ -1,0 +1,34 @@
+﻿@model AddViewModel
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>+ Measurement</h1>
+
+<p><a asp-action="All">∀ Measurement</a></p>
+
+<form method="post" asp-action="Add">
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="NewMeasurement.Systolic">Systolic</label>
+        <span class="form-text text-danger" asp-validation-for="NewMeasurement.Systolic"></span>
+        <input class="form-control" type="text" asp-for="NewMeasurement.Systolic" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="NewMeasurement.Diastolic">Diastolic</label>
+        <span class="form-text text-danger" asp-validation-for="NewMeasurement.Diastolic"></span>
+        <input class="form-control" type="text" asp-for="NewMeasurement.Diastolic" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="NewMeasurement.Date">Date</label>
+        <span class="form-text text-danger" asp-validation-for="NewMeasurement.Date"></span>
+        <input class="form-control" type="date" asp-for="NewMeasurement.Date" />
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Add" />
+    <a class="btn btn-secondary" asp-action="All">Cancel</a>
+</form>

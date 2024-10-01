@@ -1,0 +1,45 @@
+﻿@model EditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Δ Measurement</h1>
+
+<p><a asp-action="All">∀ Measurement</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a asp-action="Add">+ Measurement</a></p>
+
+@if(Model.CRUDMeasurement != null)
+{
+    <form method="post" asp-action="Edit">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+        <input type="hidden" asp-for="CRUDMeasurement.MeasurementID" />
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="CRUDMeasurement.Systolic">Systolic</label>
+            <span class="form-text text-danger" asp-validation-for="CRUDMeasurement.Systolic"></span>
+            <input class="form-control" type="text" asp-for="CRUDMeasurement.Systolic" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="CRUDMeasurement.Diastolic">Diastolic</label>
+            <span class="form-text text-danger" asp-validation-for="CRUDMeasurement.Diastolic"></span>
+            <input class="form-control" type="text" asp-for="CRUDMeasurement.Diastolic" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="CRUDMeasurement.Date">Date</label>
+            <span class="form-text text-danger" asp-validation-for="CRUDMeasurement.Date"></span>
+            <input class="form-control" type="date" asp-for="CRUDMeasurement.Date" />
+        </div>
+
+        <input class="btn btn-warning" type="submit" value="Edit" />
+        <a class="btn btn-secondary" asp-action="All">Cancel</a>
+    </form>
+}
+else
+{
+    <div class="alert alert-danger" role="alert">
+        ∅ Measurment, <a asp-action="Add">+</a>!
+    </div>
+}

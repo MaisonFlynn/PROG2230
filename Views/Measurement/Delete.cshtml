@@ -1,0 +1,34 @@
+﻿@model DeleteViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>- Measurement</h1>
+
+<p><a asp-action="All">∀ Measurement</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a asp-action="Add">+ Measurement</a></p>
+
+@if(Model.CRUDMeasurement != null)
+{
+    <form method="post" asp-action="Delete">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+        <input type="hidden" asp-for="CRUDMeasurement.MeasurementID" />
+        <input type="hidden" asp-for="CRUDMeasurement.Systolic" />
+        <input type="hidden" asp-for="CRUDMeasurement.Diastolic" />
+
+        <div class="mb-3">
+            <h2>Delete?</h2>
+            <h3>@Model.CRUDMeasurement.Systolic/@Model.CRUDMeasurement.Diastolic @@ @Model.CRUDMeasurement.Date?.ToShortDateString()</h3>
+        </div>
+
+        <input class="btn btn-danger" type="submit" value="Delete" />
+        <a class="btn btn-secondary" asp-action="All">Cancel</a>
+    </form>
+}
+else
+{
+    <div class="alert alert-danger" role="alert">
+        ∅ Measurment, <a asp-action="Add">+</a>!
+    </div>
+}
