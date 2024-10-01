@@ -20,3 +20,27 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.dark-green {
+    color: #006400;
+}
+
+.blue {
+    color: #0000FF;
+}
+
+.orange {
+    color: #FFA500;
+}
+
+.orange-red {
+    color: #FF4500;
+}
+
+.dark-red {
+    color: #8B0000;
+}
+
+.black {
+    color: #000000;
+}

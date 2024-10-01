@@ -2,6 +2,20 @@
 
 @{
     ViewData["Title"] = "All";
+
+    // Helper Function
+    string Colour(string category)
+    {
+        return category switch
+        {
+            "Normal" => "dark-green",
+            "Elevated" => "blue",
+            "Hypertension Stage Ⅰ" => "orange",
+            "Hypertension Stage Ⅱ" => "orange-red",
+            "Hypertensive Crisis" => "dark-red",
+            _ => "black"
+        };
+    }
 }
 
 <h1>∀ Measurement</h1>
@@ -32,8 +46,12 @@
             @foreach(var measurement in Model.AllMeasurement)
             {
                 <tr>
-                    <td>@measurement.Systolic/@measurement.Diastolic</td>
-                    <td>@measurement.Category</td>
+                    <td class="@Colour(measurement.Category)">
+                        @measurement.Systolic/@measurement.Diastolic
+                    </td>
+                    <td class="@Colour(measurement.Category)">
+                        @measurement.Category
+                    </td>
                     <td>@measurement.Date?.ToShortDateString()</td>
                     <td>
                         <p><a class="link-primary" asp-action="Edit" asp-route-measurementID="@measurement.MeasurementID">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="link-primary" asp-action="Delete" asp-route-measurementID="@measurement.MeasurementID">Delete</a></p>
