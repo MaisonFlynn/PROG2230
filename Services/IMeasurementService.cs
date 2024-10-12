@@ -4,6 +4,7 @@ namespace Ass1gnment.Services
 {
     public interface IMeasurementService
     {
+        public List<Position> GetPosition();
         public List<Measurement> GetAllMeasurement();
         public Measurement GetMeasurement(int measurementId);
         public int AddMeasurement(Measurement measurement);

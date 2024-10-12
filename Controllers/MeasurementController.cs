@@ -30,7 +30,8 @@ namespace Ass1gnment.Controllers
         {
             var viewModel = new AddViewModel()
             {
-                NewMeasurement = new Measurement()
+                NewMeasurement = new Measurement(),
+                Position = _measurementService.GetPosition()
             };
 
             return View("Add", viewModel);
@@ -41,6 +42,7 @@ namespace Ass1gnment.Controllers
         { 
             if (!ModelState.IsValid)
             {
+                viewModel.Position = _measurementService.GetPosition();
                 return View(viewModel);
             }
             else
@@ -56,7 +58,8 @@ namespace Ass1gnment.Controllers
         {
             var viewModel = new EditViewModel()
             {
-                CRUDMeasurement = _measurementService.GetMeasurement(measurementID)
+                CRUDMeasurement = _measurementService.GetMeasurement(measurementID),
+                Position = _measurementService.GetPosition()
             };
 
             return View("Edit", viewModel);
@@ -67,6 +70,7 @@ namespace Ass1gnment.Controllers
         {
             if (!ModelState.IsValid)
             {
+                viewModel.Position = _measurementService.GetPosition();
                 return View("Edit", viewModel);
             }
             else

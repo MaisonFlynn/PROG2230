@@ -38,7 +38,8 @@ namespace Ass1gnment.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<int>("PositionID")
+                    b.Property<int?>("PositionID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("Systolic")
@@ -90,40 +91,40 @@ namespace Ass1gnment.Migrations
                             Date = new DateTime(1996, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Diastolic = 78,
                             PositionID = 2,
-                            Systolic = 188
+                            Systolic = 118
                         });
                 });
 
             modelBuilder.Entity("Ass1gnment.Entities.Position", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("PositionID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PositionID"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("PositionID");
 
                     b.ToTable("Position");
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
+                            PositionID = 1,
                             Name = "Standing"
                         },
                         new
                         {
-                            ID = 2,
+                            PositionID = 2,
                             Name = "Sitting"
                         },
                         new
                         {
-                            ID = 3,
+                            PositionID = 3,
                             Name = "Supine"
                         });
                 });
@@ -133,7 +134,7 @@ namespace Ass1gnment.Migrations
                     b.HasOne("Ass1gnment.Entities.Position", "Position")
                         .WithMany()
                         .HasForeignKey("PositionID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Position");

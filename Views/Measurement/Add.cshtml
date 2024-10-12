@@ -24,6 +24,18 @@
     </div>
 
     <div class="mb-3">
+        <label class="form-label" asp-for="NewMeasurement.PositionID">Position</label>
+        <span class="form-text text-danger" asp-validation-for="NewMeasurement.PositionID"></span>
+        <select class="form-select" asp-for="NewMeasurement.PositionID">
+            <option value="">Position</option>
+            @foreach(var position in Model.Position)
+            {
+                <option value="@position.PositionID">@position.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
         <label class="form-label" asp-for="NewMeasurement.Date">Date</label>
         <span class="form-text text-danger" asp-validation-for="NewMeasurement.Date"></span>
         <input class="form-control" type="date" asp-for="NewMeasurement.Date" />

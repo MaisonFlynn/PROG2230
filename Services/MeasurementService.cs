@@ -1,4 +1,5 @@
 ﻿using Ass1gnment.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ass1gnment.Services
 {
@@ -11,9 +12,14 @@ namespace Ass1gnment.Services
             _dbContext = dbContext;
         }
 
+        public List<Position> GetPosition()
+        {
+            return _dbContext.Position.ToList();
+        }
+
         public List<Measurement> GetAllMeasurement()
         {
-            return _dbContext.Measurement.ToList();
+            return _dbContext.Measurement.Include(m => m.Position).ToList();
         }
 
         public Measurement GetMeasurement(int measurementID)

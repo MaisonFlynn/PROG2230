@@ -18,6 +18,11 @@ namespace Ass1gnment.Entities
         // [Range(typeof(DateTime), "09/01/2024", "09/30/2024", ErrorMessage = "Date != 09/??/2024")]
         public DateTime? Date { get; set; }
 
+        [Required(ErrorMessage = "!Position")]
+        public int? PositionID { get; set; }
+
+        public Position? Position { get; set; }
+
         public string Category
         {
             get

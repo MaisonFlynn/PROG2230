@@ -17,13 +17,13 @@ namespace Ass1gnment.Migrations
                 name: "Position",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    PositionID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Position", x => x.ID);
+                    table.PrimaryKey("PK_Position", x => x.PositionID);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,13 +44,13 @@ namespace Ass1gnment.Migrations
                         name: "FK_Measurement_Position_PositionID",
                         column: x => x.PositionID,
                         principalTable: "Position",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "PositionID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Position",
-                columns: new[] { "ID", "Name" },
+                columns: new[] { "PositionID", "Name" },
                 values: new object[,]
                 {
                     { 1, "Standing" },
@@ -67,7 +67,7 @@ namespace Ass1gnment.Migrations
                     { 2, new DateTime(2025, 12, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), 91, 3, 142 },
                     { 3, new DateTime(2002, 11, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), 85, 1, 131 },
                     { 4, new DateTime(1998, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 79, 2, 122 },
-                    { 5, new DateTime(1996, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), 78, 2, 188 }
+                    { 5, new DateTime(1996, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), 78, 2, 118 }
                 });
 
             migrationBuilder.CreateIndex(
